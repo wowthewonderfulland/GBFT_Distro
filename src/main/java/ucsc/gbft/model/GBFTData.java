@@ -1,7 +1,9 @@
 package ucsc.gbft.model;
 
-public class GBFTData {
-    double randomId;
+import java.io.Serializable;
+
+public class GBFTData implements Serializable {
+    transient double randomId;
     String key;
     String value;
 
@@ -21,5 +23,28 @@ public class GBFTData {
 
     public String getValue() {
         return value;
+    }
+
+    public void setRandomId(double _randomId) {
+        randomId = _randomId;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return "Data: "+ key + " : " + value;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        GBFTData d = (GBFTData) obj;
+        return randomId == d.getRandomId() && key == d.getKey() && value == d.getValue();
     }
 }

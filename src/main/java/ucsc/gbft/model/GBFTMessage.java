@@ -2,7 +2,9 @@ package ucsc.gbft.model;
 
 import ucsc.gbft.comm.ConsensusRequest;
 
-public class GBFTMessage {
+import java.io.Serializable;
+
+public class GBFTMessage implements Serializable {
     GBFTView view;
     GBFTData data;
 
@@ -28,5 +30,18 @@ public class GBFTMessage {
 
     public GBFTView getView() {
         return view;
+    }
+
+    public void setView(GBFTView view) {
+        this.view = view;
+    }
+
+    public void setData(GBFTData data) {
+        this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "Current View: " + view + " Data: " + data;
     }
 }

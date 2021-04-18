@@ -2,7 +2,9 @@ package ucsc.gbft.model;
 
 import ucsc.gbft.model.GBFTEnum.GBFTViewStage;
 
-public class GBFTView {
+import java.io.Serializable;
+
+public class GBFTView implements Serializable {
 
     int masterId;
     int centerId;
@@ -42,5 +44,31 @@ public class GBFTView {
     public boolean equals(Object obj) {
         GBFTView v = (GBFTView)obj;
         return v.masterId == masterId && viewId == v.viewId && sequenceId == v.sequenceId && viewStage == v.viewStage;
+    }
+
+    public void setMasterId(int masterId) {
+        this.masterId = masterId;
+    }
+
+    public void setCenterId(int centerId) {
+        this.centerId = centerId;
+    }
+
+    public void setViewId(int viewId) {
+        this.viewId = viewId;
+    }
+
+    public void setSequenceId(int sequenceId) {
+        this.sequenceId = sequenceId;
+    }
+
+    public void setViewStage(GBFTViewStage viewStage) {
+        this.viewStage = viewStage;
+    }
+
+    @Override
+    public String toString() {
+        return "Master: "+ masterId+ " Center: " + centerId + " View: " + viewId + " Sequence: " + sequenceId + " Stage: "
+                + (viewStage == GBFTViewStage.None? 0 :(viewStage == GBFTViewStage.Prepare? 1:2));
     }
 }
